@@ -20,6 +20,7 @@ def show_center():
         center = int(((index_right-index_left)/2)+index_left)   #define marker point at 219th rows
         #print(index_left, "--(",center,")--", index_right)
         cv2.line(frame, (center,lineCY),(center,lineCY-20),(0,0,255),2) #draw line from center line to marker point
+        #kit.servo[0].angle = 120   #ESC going FWD
         return center
     #else:
         #print ("NO") #stop the ESC and try to reverse a few step back
@@ -76,11 +77,12 @@ def servo():
             valServo = int(degree)  #equalize degree with servo output
             #print (valServo)
             outServo = valServo
-        #kit.servo[0].angle = outServo  #output to servo
+        #kit.servo[1].angle = outServo  #output to servo
         return outServo
     else:       #handling NULL value if existed
         #stop but also can tweak into reverse
-        #kit.servo[0].angle = 90
+        #kit.servo[0].angle = 90    #ESC stop
+        #kit.servo[1].angle = 90    #Servo turn to center point
 
         print ("REVERSE")
 
